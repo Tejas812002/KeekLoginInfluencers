@@ -2,8 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        openSans: ["Open Sans", "sans-serif"],
+        greatMango: ["Great Mango", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
-
