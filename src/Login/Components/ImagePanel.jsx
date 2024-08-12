@@ -22,7 +22,7 @@ export default function ImagePanel({
   });
 
   return (
-    <div className="overflow-hidden fixed h-screen max-h-[900px]">
+    <div className="overflow-hidden fixed h-screen max-h-[895px]">
       <div
         className={`flex transition ease-out duration-40 w-[850px] max-h-screen`}
         style={{

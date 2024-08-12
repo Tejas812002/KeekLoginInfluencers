@@ -11,7 +11,7 @@ import ForgetPass3 from "./Login/Components/ForgetPass3";
 
 const App = () => {
   return (
-    <div className="flex w-[1440px] h-screen max-h-[900px] font-openSans">
+    <div className="flex w-[1440px] h-screen max-h-[895px] font-openSans">
       <div>
         <ImagePanel />
       </div>
