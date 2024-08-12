@@ -30,7 +30,7 @@ const MobileSignUpPage = () => {
 
   const handleMobileNumberChange = (e) => {
     const value = e.target.value;
-    if (/^\d*$/.test(value)) {
+    if (/^\d*$/.test(value) && value.length <= 13) {
       setMobileNumber(value);
     }
   };
