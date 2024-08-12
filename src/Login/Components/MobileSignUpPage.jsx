@@ -73,7 +73,7 @@ const MobileSignUpPage = () => {
           </span>
         </div>
         <div className="tex-wrapper mt-5">
-          <div className="h-[25px] flex items-center gap-2">
+          <div className="h-[25px] flex items-center">
             <div className="text-black text-lg font-normal font-['Open Sans']">
               Name
             </div>
@@ -96,7 +96,7 @@ const MobileSignUpPage = () => {
               <div className="text-black text-lg font-normal font-['Open Sans']">
                 Country code
               </div>
-              <div className="h-[25px] flex items-center gap-1">
+              <div className="h-[25px] flex items-center">
                 <div className="text-black text-lg font-normal font-['Open Sans']">
                   Mobile Number
                 </div>

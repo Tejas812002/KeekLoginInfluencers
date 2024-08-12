@@ -52,7 +52,7 @@ const VerifyNumber = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6 h-[55px] justify-start items-center gap-5 inline-flex">
+      <div className="mt-6 h-[55px] w-[280px] justify-start items-center gap-5 inline-flex">
         {otp.map((value, index) => (
           <input
             key={index}
