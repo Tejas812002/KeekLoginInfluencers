@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [shoPass, setShowPass] = useState(false);
   return (
     <div>
-      <div className="ml-11 mt-[19px]">
+      <div className="mx-11 mt-[19px]">
         <h1 className="mb-[35px]">
           <span className="font-semibold text-[31px] text-[#384EDD]">
             KEEK |
@@ -102,10 +102,12 @@ const LoginPage = () => {
           </div>
           <div className="text-center pb-[21px]">
             Don’t have an account? &nbsp;
-            <span className="text-[#06F]">
-              Brand page
-              <RiArrowRightUpLine className="inline-block text-lg text-[#06F]" />
-            </span>
+            <a href="https://keek-login.vercel.app/">
+              <span className="text-[#06F]">
+                Brand page
+                <RiArrowRightUpLine className="inline-block text-lg text-[#06F]" />
+              </span>
+            </a>
           </div>
         </div>
       </div>

@@ -6,7 +6,10 @@ import img2 from "../../assets/unsplash_img2.png";
 import profile from "../../assets/Intersect.svg";
 import profile2 from "../../assets/Intersect2.svg";
 import profile3 from "../../assets/Intersect3.svg";
-export default function ImagePanel({ autoSlide = true, autoSlideInterval = 5000 }) {
+export default function ImagePanel({
+  autoSlide = true,
+  autoSlideInterval = 5000,
+}) {
   const [curr, setCurr] = useState(0);
   const slides = [img1, img2];
   const next = () =>
@@ -19,7 +22,7 @@ export default function ImagePanel({ autoSlide = true, autoSlideInterval = 5000 
   });
 
   return (
-    <div className="overflow-hidden fixed h-screen">
+    <div className="overflow-hidden fixed h-screen max-h-[900px]">
       <div
         className={`flex transition ease-out duration-40 w-[850px] max-h-screen`}
         style={{

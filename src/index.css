@@ -2,10 +2,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: "Great Mango";
-  src: url("../src/assets/Great-Mango.ttf") format('ttf'),
-        url("../src/assets/Great-Mango.otf") format('otf');
+  src: url("../src/assets/GreatMango-Regular.eot");
+  src: local("Great Mango Regular"), local("GreatMango-Regular"),
+    url("../src/assets/GreatMango-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/GreatMango-Regular.woff2") format("woff2"),
+    url("../src/assets/GreatMango-Regular.woff") format("woff"),
+    url("../src/assets/GreatMango-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
