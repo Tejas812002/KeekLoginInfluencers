@@ -28,7 +28,7 @@ const MoreInfo = () => {
   };
 
   return (
-    <div className="w-[1440px] h-[895px] bg-[#D9D9D9] flex justify-center shrink-0">
+    <div className="min-w-[1440px] w-screen h-[895px] bg-[#D9D9D9] flex justify-center shrink-0">
       <form onSubmit={handleSubmit} className="mt-[55px]">
         <div className="bg-[#FFFFFF] w-[710px] h-[790px] rounded-[14px] relative">
           <div className="h-[82px] pt-[48px] pl-[24px] pb-[12px] pr-[24px] flex justify-between">

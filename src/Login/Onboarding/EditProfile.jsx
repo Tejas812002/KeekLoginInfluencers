@@ -63,7 +63,7 @@ const PlatformComp = ({ setOnboardingVisibility }) => {
   };
 
   return (
-    <div className="w-[1440px] h-[895px] bg-[#D9D9D9] flex justify-center shrink-0">
+    <div className="min-w-[1440px] w-screen h-[895px] bg-[#D9D9D9] flex justify-center shrink-0">
       <div className="w-[710px] h-[790px] rounded-[10px] mt-[55px] bg-white shadow-[2px_4px_14px_2px_rgba(0,0,0,0.25)]">
         <div className="border-b-4 h-[78px] w-[710px]  pt-[48px] px-[24px] pb-[12px] border-[#0066ff] flex justify-between ">
           <h1 className="w-[105px] h-[18px] font-body font-semibold text-[14px] text-[#363939]">

@@ -66,7 +66,7 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="w-[1440px] h-[895px] bg-[#D9D9D9] flex items-center justify-center shrink-0">
+    <div className="min-w-[1440px] w-screen h-[895px] bg-[#D9D9D9] flex items-center justify-center shrink-0">
       <div className="w-[710px] h-[790px] bg-white rounded-[14px] relative">
         <div className="flex justify-between pt-[48px] px-6 pb-3">
           <h3>step 1: Personalization</h3>
