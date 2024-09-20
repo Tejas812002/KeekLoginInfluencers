@@ -1,13 +1,19 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { BsEyeSlash } from "react-icons/bs";
 import { FaMobileAlt } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiArrowRightUpLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SignUpPage = () => {
+const SignUpPage = ({ setOnboardingVisibility }) => {
   const [shoPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
+  const handleSignup = () => {
+    navigate("/personaliz");
+    setOnboardingVisibility(true);
+  };
   return (
     <div>
       <div className="ml-11 mt-[19px]">
@@ -112,6 +118,7 @@ const SignUpPage = () => {
               <button
                 type="submit"
                 className="w-full text-center text-white py-4 rounded-[10px] bg-[#0066FF]"
+                onClick={handleSignup}
               >
                 Sign up
               </button>
