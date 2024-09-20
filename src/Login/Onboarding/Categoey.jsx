@@ -4,19 +4,37 @@ import NicheTV from "../../assets/NicheImage2.png";
 import NicheBook from "../../assets/NicheImage3.png";
 import NicheGogle from "../../assets/NicheImage4.png";
 import { Link } from "react-router-dom";
+import { MdCheck } from "react-icons/md";
+import { useState } from "react";
 const Category = () => {
-  const NicheData = [
-    { name: "Music", image: NicheNature, color: "#FFE393" },
-    { name: "Games", image: NicheTV, color: "#C1D3E5" },
-    { name: "Music", image: NicheNature, color: "#E9CDCF" },
-    { name: "Reading", image: NicheBook, color: "#EDDDF2" },
-    { name: "Music", image: NicheNature, color: "#E9CDCF" },
-    { name: "Reading", image: NicheBook, color: "#EDDDF2" },
-    { name: "Fashion", image: NicheGogle, color: "#E2BDBF" },
-    { name: "Blog", image: NicheBook, color: "#D8E4C2" },
-    // { name: "Lifestyle", image: NicheNature, color: "#FFE393" },
-    // { name: "Reading", image: NicheBook, color: "#D8E4C2" },
-  ];
+  const [NicheData, setNicheData] = useState([
+    { name: "Music", image: NicheNature, color: "#FFE393", isCheck: false },
+    { name: "Games", image: NicheTV, color: "#C1D3E5", isCheck: false },
+    { name: "Music", image: NicheNature, color: "#E9CDCF", isCheck: false },
+    { name: "Reading", image: NicheBook, color: "#EDDDF2", isCheck: false },
+    { name: "Music", image: NicheNature, color: "#E9CDCF", isCheck: false },
+    { name: "Reading", image: NicheBook, color: "#EDDDF2", isCheck: false },
+    { name: "Fashion", image: NicheGogle, color: "#E2BDBF", isCheck: false },
+    { name: "Blog", image: NicheBook, color: "#D8E4C2", isCheck: false },
+    // { name: "Lifestyle", image: NicheNature, color: "#FFE393",isCheck:false  },
+    // { name: "Reading", image: NicheBook, color: "#D8E4C2",isCheck:false  },
+  ]);
+  const handleSelectedNiche = (id) => {
+    setNicheData((prev) =>
+      prev.map((item, index) =>
+        index === id ? { ...item, isCheck: !item.isCheck } : item
+      )
+    );
+    //  const selectedNicheData = NicheData.filter(
+    //    (item, index) => (index === id && item.isCheck) === true
+    //  );
+    //  setSelectedNiche(...selectedNicheData);
+    // const handleSelectedNiche = (id) => {
+
+    // };
+    // handleSelectedNiche(id);
+    // console.log(selectedNiche);
+  };
   return (
     <div className="min-w-[1440px] w-screen h-[895px] bg-[#D9D9D9] flex items-center justify-center shrink-0">
       <div className="w-[710px] h-[790px] bg-white rounded-[14px] overflow-hidden">
@@ -44,9 +62,17 @@ const Category = () => {
           />
         </div>
         <div className="flex gap-x-7 gap-y-4 mt-8 flex-1 flex-wrap">
-          {NicheData.map(({ name, image, color }, index) => {
+          {NicheData.map(({ name, image, color, isCheck }, index) => {
             return (
-              <NicheCard key={index} name={name} image={image} color={color} />
+              <NicheCard
+                key={index}
+                id={index}
+                name={name}
+                image={image}
+                color={color}
+                isCheck={isCheck}
+                handleSelectedNiche={handleSelectedNiche}
+              />
             );
           })}
         </div>
@@ -64,7 +90,14 @@ const Category = () => {
 
 export default Category;
 
-const NicheCard = ({ name, image, color }) => {
+const NicheCard = ({
+  id,
+  name,
+  image,
+  color,
+  isCheck,
+  handleSelectedNiche,
+}) => {
   return (
     <div
       style={{ background: color }}
@@ -77,9 +110,21 @@ const NicheCard = ({ name, image, color }) => {
       />
       <div className="flex items-center gap-2">
         <h4 className="text-lg font-semibold">{name}</h4>
-        <button className="flex h-9 px-2 items-center justify-center rounded border border-[#363939]">
-          Add
-        </button>
+        {isCheck ? (
+          <button
+            className="flex h-9 px-2 items-center justify-center rounded border border-[#363939]"
+            onClick={() => handleSelectedNiche(id)}
+          >
+            <MdCheck className="scale-150" />
+          </button>
+        ) : (
+          <button
+            className="flex h-9 px-2 text-sm items-center justify-center rounded border border-[#363939]"
+            onClick={() => handleSelectedNiche(id)}
+          >
+            Add
+          </button>
+        )}
       </div>
     </div>
   );
