@@ -25,15 +25,6 @@ const Category = () => {
         index === id ? { ...item, isCheck: !item.isCheck } : item
       )
     );
-    //  const selectedNicheData = NicheData.filter(
-    //    (item, index) => (index === id && item.isCheck) === true
-    //  );
-    //  setSelectedNiche(...selectedNicheData);
-    // const handleSelectedNiche = (id) => {
-
-    // };
-    // handleSelectedNiche(id);
-    // console.log(selectedNiche);
   };
   return (
     <div className="min-w-[1440px] w-screen h-[895px] bg-[#D9D9D9] flex items-center justify-center shrink-0">
