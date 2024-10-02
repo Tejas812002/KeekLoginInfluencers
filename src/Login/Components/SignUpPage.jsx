@@ -9,11 +9,36 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SignUpPage = ({ setOnboardingVisibility }) => {
   const [shoPass, setShowPass] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [termsChecked, setTermsChecked] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state to track form submission
   const navigate = useNavigate();
-  const handleSignup = () => {
-    navigate("/personaliz");
-    setOnboardingVisibility(true);
+
+  const validateForm = () => {
+    const errors = {};
+    const name = document.querySelector('input[name="name"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+
+    if (!name) errors.name = "Name is required";
+    if (!email) errors.email = "Email is required";
+    if (!password || password.length < 8) errors.password = "Password must be at least 8 characters";
+
+    return errors;
   };
+
+  const handleSignup = () => {
+    setIsSubmitted(true); // Mark form as submitted
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0 && termsChecked) {
+      navigate("/personaliz");
+      setOnboardingVisibility(true);
+    } else {
+      setFormErrors(errors);
+    }
+  };
+
+
   return (
     <div>
       <div className="ml-11 mt-[19px]">
@@ -46,84 +71,88 @@ const SignUpPage = ({ setOnboardingVisibility }) => {
           <hr className="w-1/2 text-[#B1B2B2]" />
         </div>
         <div>
-          <form action="" onSubmit={(e) => e.preventDefault()}>
-            <div className="mb-5">
-              <label htmlFor="" className="block">
-                Name<span className="text-[#06F]">*</span>
-              </label>
-              <input
-                className="border h-[44px] border-[#363939] px-5 py-3 w-[500px] rounded-lg"
-                type="text"
-                name=""
-                id=""
-                placeholder="John.doe@gmail.com"
-                required
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="" className="block">
-                Email<span className="text-[#06F]">*</span>
-              </label>
-              <input
-                className="border h-[44px]  border-[#363939] px-5 py-3 w-[500px] rounded-lg"
-                type="email"
-                name=""
-                id=""
-                placeholder="John.doe@gmail.com"
-                required
-              />
-            </div>
-            <div className="relative">
-              <label htmlFor="" className="block">
-                Password<span className="text-[#06F]">*</span>
-              </label>
-              <input
-                className="border h-[44px]  border-[#363939] px-5 py-3 w-[500px] rounded-lg"
-                type={`${shoPass ? "text" : "password"}`}
-                name=""
-                id=""
-                placeholder="Password"
-                required
-              />
-              <div
-                onClick={() => {
-                  setShowPass(!shoPass);
-                }}
-                className="absolute top-1/2 right-6 pl-3 flex items-center"
-              >
-                {shoPass ? (
-                  <IoEyeOutline className="text-2xl opacity-50" />
-                ) : (
-                  <BsEyeSlash className="text-2xl opacity-50" />
-                )}
-              </div>
-            </div>
-            <div className="mb-[17px] mt-1.5 text-[#8E9090] text-sm">
-              Must be at least 8 characters.
-            </div>
-            <div className="mb-[12px]">
-              <input
-                type="checkbox"
-                name=""
-                id="term"
-                className="mr-2"
-                required
-              />
-              <label htmlFor="term">
-                I Agree to
-                <span className="text-[#06F]">Terms & Condition</span>
-              </label>
-            </div>
-            <div className="mb-[11px]">
-              <button
-                type="submit"
-                className="w-full text-center text-white py-4 rounded-[10px] bg-[#0066FF]"
-                onClick={handleSignup}
-              >
-                Sign up
-              </button>
-            </div>
-          </form>
+
+           <form action="" onSubmit={(e) => e.preventDefault()}>
+        <div className="mb-5">
+          <label htmlFor="" className="block">
+            Name<span className="text-[#06F]">*</span>
+          </label>
+          <input
+            className="border h-[44px] border-[#363939] px-5 py-3 w-[500px] rounded-lg"
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            required
+          />
+          {formErrors.name && <p className="text-red-500 text-sm">{formErrors.name}</p>}
+        </div>
+        <div className="mb-5">
+          <label htmlFor="" className="block">
+            Email<span className="text-[#06F]">*</span>
+          </label>
+          <input
+            className="border h-[44px] border-[#363939] px-5 py-3 w-[500px] rounded-lg"
+            type="email"
+            name="email"
+            placeholder="John.doe@gmail.com"
+            required
+          />
+          {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
+        </div>
+        <div className="relative">
+          <label htmlFor="" className="block">
+            Password<span className="text-[#06F]">*</span>
+          </label>
+          <input
+            className="border h-[44px] border-[#363939] px-5 py-3 w-[500px] rounded-lg"
+            type={`${shoPass ? "text" : "password"}`}
+            name="password"
+            placeholder="Password"
+            required
+          />
+          {formErrors.password && <p className="text-red-500 text-sm">{formErrors.password}</p>}
+          <div
+            onClick={() => {
+              setShowPass(!shoPass);
+            }}
+            className="absolute top-1/2 right-6 pl-3 flex items-center"
+          >
+            {shoPass ? (
+              <IoEyeOutline className="text-2xl opacity-50" />
+            ) : (
+              <BsEyeSlash className="text-2xl opacity-50" />
+            )}
+          </div>
+        </div>
+        <div className="mb-[26px] mt-1.5 text-[#8E9090] text-sm">
+          Must be at least 8 characters.
+        </div>
+        <div className="mb-7">
+          <input
+            type="checkbox"
+            id="term"
+            className="mr-2"
+            onChange={(e) => setTermsChecked(e.target.checked)}
+          />
+          <label htmlFor="term">
+            I Agree to <span className="text-[#06F]">Terms & Condition</span>
+          </label>
+          {/* Only show the error after form submission */}
+          {isSubmitted && !termsChecked && (
+            <p className="text-red-500 text-sm">You must agree to the terms and conditions</p>
+          )}
+        </div>
+        <div className="mb-[22px]">
+          <button
+            onClick={handleSignup}
+            type="submit"
+            className="w-full text-center text-white py-4 rounded-[10px] bg-[#0066FF]"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+
           <div className="mb-[21px]">
             <hr className="text-[#B1B2B2]" />
           </div>
